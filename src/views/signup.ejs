@@ -86,7 +86,7 @@
                     <form action="/src/views/login.ejs" id="signupform" class="signup-form">
                       <div class="form-elements mb-3">
                         <label class="label" for="name">Full Name</label>
-                        <input id="username" type="text" class="form-control" placeholder="John Doe">
+                        <input id="username" type="text" class="form-control" placeholder="John Doe" oninput="uservalidation()" >
                         
                         <small>error-msg</small>
                       </div>
