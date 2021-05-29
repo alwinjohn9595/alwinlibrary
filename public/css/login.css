@@ -1,0 +1,88 @@
+.login-wrap{
+    position: relative;
+    justify-content: center;
+    left: 300px;
+    
+  }
+input {
+    width: 100%;
+    border: none;
+    height: 30px;
+    padding: 0px 40px 0px 10px;
+    font-size: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.form-elements i {
+    position: absolute;
+    right: 13px;
+    top: 34px;
+    visibility: hidden;
+    
+}
+.form-elements label{
+    font-family: sans-serif;
+    font-size: 1.1em;
+    display: inline-block;
+    
+}
+.form-elements small {
+    visibility: hidden;
+    
+}
+.form-elements.success input {
+  border: 2px solid #2ecc71;
+}
+.form-elements.error input {
+    border: 2px solid #e74c3c;
+  }
+.form-elements.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71;
+}
+.form-elements.error i.fa-exclamation-circle {
+    visibility: visible;
+    color: #e74c3c;
+}
+.form-elements.error small {
+    visibility: visible;
+    color:  #e74c3c;
+    font-size: 1.2em;
+    font-style: italic;
+
+}
+.form-elements .icon {
+
+    
+        position: absolute;
+        top: 13%;
+        left: 18px;
+        margin-top: 10px;
+        
+    
+
+
+}
+
+
+.progress {
+    height: 4px;
+}
+.progress-bar-danger{
+    background-color:#e90f10 ;
+
+}
+.progress-bar-warning{
+    background-color: yellow;
+
+}
+.progress-bar-success{
+    background-color:#02b502 ;
+
+}
+
+
+
+
+
