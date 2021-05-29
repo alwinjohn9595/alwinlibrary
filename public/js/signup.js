@@ -62,7 +62,7 @@ function uservalidation(){
      
     if(usernameValue==""){
         
-        Forerror (username, "Phone number formate error");
+        Forerror (username, "cannot be empty");
     }
     else {
         Forsuccess (username);
