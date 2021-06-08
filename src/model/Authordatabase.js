@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 
 const AuthorSchema = new Schema ({
-    author : String,
+    authorname : String,
     gener: String,
-    image: String,
+    info: String,
     image : String
     
 });
