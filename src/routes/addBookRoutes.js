@@ -29,7 +29,7 @@ function addbook(nav) {
     })
 
     addBookRouter.post("/add",upload.single('image'),(req,res,next)=>{
-        console.log(req.file);
+       
         
         
         var item = {
