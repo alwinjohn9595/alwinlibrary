@@ -28,26 +28,36 @@ function addbook(nav) {
         })
     })
 
-    addBookRouter.post("/add",upload.single('image'),(req,res,next)=>{
-       
+    addBookRouter.post("/add",upload.single('image'),(req,res)=>{
+        if(req.body._id == '')
+         insertRecord(req,res);
+
+         else
+         updateRecord(res,req)
         
         
-        var item = {
-        title: req.body.title,
-        author: req.body.author,
-        gener: req.body.gener,
-        image: req.file.filename
-
-    }
-
-        var book = Bookdata(item);
-        book.save();
-        res.redirect('/books');
         
         
     });   
+    function insertRecord(req,res){
+        var item = {
+            title: req.body.title,
+            author: req.body.author,
+            gener: req.body.gener,
+            image: req.file.filename
     
-
+        }
+    
+            var book = Bookdata(item);
+            book.save();
+            res.redirect('/books');
+    }
+    
+    function updateRecord(req,res) {
+        Bookdata.findByIdAndUpdate({_id: req.body._id},req.body,{ new: true},(err,doc)=>{
+            if(!err){res.redirect("/books")}
+        })
+    }
 
     
    return addBookRouter;

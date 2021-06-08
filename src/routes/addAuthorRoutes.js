@@ -28,24 +28,32 @@ function Addauthor(nav){
      
 
     addAuthorRoutes.post("/add",upload.single('image'),(req,res)=>{
-        console.log(req.file);
+        
+        insertRecord(req,res);
         
         
-        var item = {
-        authorname: req.body.authorname,
-        gener: req.body.gener,
-        info: req.body.info,
-        image: req.file.filename
+        
 
-    }
-    
+     });
+
+      function insertRecord(req,res) {
+            var item = {
+                authorname: req.body.authorname,
+                gener: req.body.gener,
+                info: req.body.info,
+                image: req.file.filename
+        
+            }
+        
+        
+        
+                var book = authordata(item);
+                book.save();
+                res.redirect('/authors');
+         }
 
 
-        var book = authordata(item);
-        book.save();
-        res.redirect('/authors');
 
-});
 
     return addAuthorRoutes;
 }
