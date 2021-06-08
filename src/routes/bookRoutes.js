@@ -36,6 +36,19 @@ function router(nav){
         
         
     });
+    booksRouter.get("/:id/update", (req,res)=>{
+        const al = req.params.id;
+        Bookdata.findById(al,(err,doc)=>{
+            if(!err){
+                res.render("addBook",{
+                    nav,
+                    title:'Library',
+                    book: doc
+                } )
+            }
+        })
+
+     })
 
     return booksRouter;
 }

@@ -30,7 +30,20 @@ function authorrouter(nav)
             author
             })
          });
-      authorRouter.get("/:id/update")    
+         authorRouter.get("/:id/update", (req,res)=>{
+            const al = req.params.id;
+            authordata.findById(al,(err,doc)=>{
+                if(!err){
+                    res.render("addAuthor",{
+                        nav,
+                        title:'Library',
+                        author: doc
+                    } )
+                }
+            })
+    
+         })
+
 
 });
 
