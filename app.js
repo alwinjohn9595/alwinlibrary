@@ -1,5 +1,4 @@
 const express = require("express");
-const  validation = require('')
 
 const app = new express();
 require("./src/db/connect");
@@ -89,17 +88,7 @@ app.get("/",function(req,res){
 
     });
 });
-app.post("/",function(req,res){
-    res.render("index" , 
-    
-    { 
-        nav,
-        title:'Library'
 
-
-
-    });
-});
 
 
 

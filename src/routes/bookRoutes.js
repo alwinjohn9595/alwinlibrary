@@ -21,7 +21,7 @@ function router(nav){
     });
     
     booksRouter.get("/:id", (req,res)=>{
-        const id = req.params.id;
+        const id = req.params.id
         Bookdata.findOne({_id: id})
         .then((book)=>{
             
@@ -29,9 +29,10 @@ function router(nav){
                 nav,
                 title:'Library',
                 book
+            })
         
             });
-        })
+    
         
         
     });
