@@ -43,6 +43,14 @@ function authorrouter(nav)
             })
     
          })
+         authorRouter.get("/:id/delete",(req,res)=>{
+            const al = req.params.id
+            authordata.findByIdAndRemove(al,(err,doc)=>{
+                if(!err){
+                    res.redirect("/authors");
+                }
+            })
+         })
 
 
 });

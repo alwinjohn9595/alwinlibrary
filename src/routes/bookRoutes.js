@@ -50,6 +50,15 @@ function router(nav){
 
      })
 
+     booksRouter.get("/:id/delete",(req,res)=>{
+        const al = req.params.id
+        Bookdata.findByIdAndRemove(al,(err,doc)=>{
+            if(!err){
+                res.redirect("/books");
+            }
+        })
+     })
+
     return booksRouter;
 }
 
