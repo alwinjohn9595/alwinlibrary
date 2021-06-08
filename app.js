@@ -60,7 +60,7 @@ const signupRouter = require("./src/routes/signupRoutes")(nav);
 const loginRouter = require("./src/routes/loginRoutes")(nav);
 
 
-
+app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('./public'));
 

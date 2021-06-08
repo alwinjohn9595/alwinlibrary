@@ -10,6 +10,7 @@ const userSchema = new Schema ({
 
     emailid:{
         type: String,
+        unique: true
         
         
     },

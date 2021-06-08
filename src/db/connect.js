@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/library';
+const url = 'mongodb+srv://userone:userone@ictakfiles.pf4oc.mongodb.net/LIBRARYAPP?retryWrites=true&w=majority';
 mongoose.connect(url,
     {   useCreateIndex:true,
         useNewUrlParser:true,

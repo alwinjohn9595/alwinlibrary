@@ -9,7 +9,7 @@ function addbook(nav) {
      
     const storage = multer.diskStorage({
         destination: (req,file,cb)=>{
-            cb(null,'../public/image/books')
+            cb(null,'./public/image/books')
         },
         filename: (req,file,cb)=>{
             console.log(file);
@@ -30,7 +30,7 @@ function addbook(nav) {
 
     addBookRouter.post("/add",upload.single('image'),(req,res,next)=>{
         console.log(req.file);
-        const file = req.file;
+        
         
         var item = {
         title: req.body.title,

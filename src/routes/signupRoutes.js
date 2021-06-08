@@ -16,9 +16,14 @@ function adduser(nav) {
     userRouter.post("/add", async (req,res)=>{
         const emailid = req.body.emailid;
         
-         console.log(req.body);
+         console.log(req.body.emaild);
         try {  
-
+            const xy = await signupdata.findOne({emaild: emaild})
+            console.log(xy.emaild);
+               if(xy.emaild === emailid)
+               {
+                   res.json("errro alresady")
+               } else{
                 var item = {
                     username: req.body.username,
                     emailid: req.body.emailid,
@@ -29,6 +34,9 @@ function adduser(nav) {
                     var user =  signupdata(item);
                     user.save();
                     res.redirect("/login");
+               }
+
+                
             
         }catch(error){
             res.status(400).send("error");
