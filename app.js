@@ -1,6 +1,8 @@
 const express = require("express");
+const  validation = require('')
 
 const app = new express();
+require("./src/db/connect");
 
 const port = process.env.PORT || 5000;
 
@@ -48,14 +50,19 @@ const nav = [
         
         
             ];
+          
 
 
 const booksRouter = require("./src/routes/bookRoutes")(nav);
 const authorRouter = require("./src/routes/authorRoutes")(nav);
 const addBookRouter = require("./src/routes/addBookRoutes")(nav);
 const addAuthorRouter = require("./src/routes/addAuthorRoutes")(nav);
+const signupRouter = require("./src/routes/signupRoutes")(nav);
+const loginRouter = require("./src/routes/loginRoutes")(nav);
 
 
+
+app.use(express.urlencoded({extended:true}));
 app.use(express.static('./public'));
 
 
@@ -68,6 +75,8 @@ app.use('/books',booksRouter);
 app.use('/authors', authorRouter);
 app.use('/addAuthor',addAuthorRouter);
 app.use('/addBook',addBookRouter);
+app.use('/signup',signupRouter);
+app.use('/login', loginRouter);
 
 app.get("/",function(req,res){
     res.render("index" , 
@@ -80,17 +89,20 @@ app.get("/",function(req,res){
 
     });
 });
+app.post("/",function(req,res){
+    res.render("index" , 
+    
+    { 
+        nav,
+        title:'Library'
 
-app.get("/signup",(req,res)=>{
-    res.render("signup",{
-        nav
-    })
-})
-app.get("/login",(req,res)=>{
-    res.render("login",{
-        nav
-    })
-})
+
+
+    });
+});
+
+
+
 
 
 

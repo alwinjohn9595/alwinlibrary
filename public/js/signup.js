@@ -19,19 +19,22 @@ let eightChar = document.querySelector(".eight-character i");
 
 
 
-signform.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    checkinputs();
+function validation (){
+    t1 = emailvalidation();
+    t2 = uservalidation();
+    t3 = passwordvalidation();
+    if(t1&&t2){
+        alert("Sign up successful");
+        return true; 
+    }else{
+        alert("Some fileds are missing");
+        return false; 
+    }
 
-})
+}
 
 
-  function checkinputs() {
-      emailvalidation();
-      uservalidation();
-      passwordvalidation();
-  }
-
+  
 
 
 
@@ -45,11 +48,13 @@ function emailvalidation() {
         if(!isValidEmail(emailValue)){
         
            
-            Forerror (emailid, "Email formate error");          
+            Forerror (emailid, "Email formate error"); 
+            return false;         
         
     
         }else{
             Forsuccess (emailid); 
+            return true;
         }
     
      
@@ -60,12 +65,14 @@ function emailvalidation() {
 function uservalidation(){
     const usernameValue = username.value.trim();
      
-    if(usernameValue==""){
+    if(!isValidUser(usernameValue)){
         
-        Forerror (username, "cannot be empty");
+        Forerror (username, " format error");
+        return false;
     }
     else {
         Forsuccess (username);
+        return true;
     }
     }
 
@@ -75,6 +82,7 @@ function passwordvalidation() {
     if(passValue ==="")
     {
         Forerror (password, "Password cannot be empty");
+        
     }
     else
     checkStrength(passValue);
@@ -137,6 +145,8 @@ function checkStrength(passW){
         passwordstrength.classList.remove("progress-bar-danger");
         passwordstrength.classList.add("progress-bar-success");
         passwordstrength.style="width:100%";
+        Forsuccess (password, 'successfull');
+        
     }
 
 
@@ -161,16 +171,13 @@ function checkStrength(passW){
 
 
 
-
-
-     
-        
-
-
-
     function isValidEmail(email) {
             return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
                 
-        } 
+    } 
+
+    function isValidUser(username){
+        return /^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(username);
+    }
     
 

@@ -1,32 +1,43 @@
-const signform = document.getElementById('signup-form');
+const addform = document.getElementById('addbook-form');
 
 const authorname = document.getElementById('authorname');
 const gener = document.getElementById('gener');
 const bookname = document.getElementById('bookname');
-const imageurl = document.getElementById('imageurl');
+const imageurl = document.getElementById('imagefile');
+const input = document.querySelectorAll('input');
 
-signform.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    checkinputs();
-
-})
-
-function checkinputs() {
-    authorvalidation();
-    bookvalidation();
-    genervalidation();
-    imageurlvalidation();
+function validation(){
+                let t1=authorvalidation();
+                let t2=bookvalidation();
+                let t3=genervalidation();
+                let t4=imagefilevalidation();
+                if(t1&&t2&&t3&&t4)
+                {
+                    alert("Book added");
+                    swal("Good job!", "You clicked the button!", "success");
+                    return true;
+                }
+                else
+                  alert("error somefileds are missing")
+                  return false;
 }
+
+
+
 
 function authorvalidation(){
     const authorValue = authorname.value.trim();
+
      
     if(authorValue==""){
         
         Forerror (authorname, "cannot be empty");
+        return false;
+        
     }
     else {
         Forsuccess (authorname);
+        return true;
     }
     }
 
@@ -36,9 +47,12 @@ function authorvalidation(){
         if(passValue==""){
             
             Forerror (bookname, "cannot be empty ");
+            return false;
+
         }
         else {
             Forsuccess (bookname);
+            return true;
         }
         }
         
@@ -49,25 +63,31 @@ function authorvalidation(){
             if(passValue==""){
                 
                 Forerror (gener, "cannot be empty ");
+                return false;
+                
             }
             else {
                 Forsuccess (gener);
+                return true;
             }
             }
         
 
-    function imageurlvalidation(){
-                const passValue = imageurl.value.trim();
+    function imagefilevalidation(){
+                const passValue = imageurl.value;
                  
                 if(passValue==""){
                     
                     Forerror (imageurl, " cannot be empty ");
+                    return false;
                 }
                 else {
                     Forsuccess (imageurl);
+                    return true;
                 }
                 }
         
+
 
          function Forerror (input, message) {
         let parent = input.parentElement;
