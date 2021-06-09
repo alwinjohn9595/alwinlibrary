@@ -14,6 +14,7 @@ function authorrouter(nav)
                res.render("authors",{
                   nav,
                   authors
+                  
                   });
 
             })   
@@ -34,6 +35,7 @@ function authorrouter(nav)
             const al = req.params.id;
             authordata.findById(al,(err,doc)=>{
                 if(!err){
+                    res.locals.id = al;
                     res.render("addAuthor",{
                         nav,
                         title:'Library',

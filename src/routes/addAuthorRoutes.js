@@ -22,41 +22,47 @@ function Addauthor(nav){
 
     addAuthorRoutes.get("/",(req,res)=>{
         res.render("addAuthor",{
-            nav
+            nav,
+            id: req.params._id
         })
     })
      
 
     addAuthorRoutes.post("/add",upload.single('image'),(req,res)=>{
-        const al = req.body._id;
-        if(al ==""){
-            insertRecord(req,res);
-        }
-
-        
-
-        else{
-            let userid = req.body._id;
-            let updatedata = {
-                authorname: req.body.authorname,
-                info:  req.body.info,
-                gener: req.body.gener,
-                image: req.file.filename
-
-
-            }
-
-            authordata.findByIdAndUpdate(userid, { $set:updatedata})
-            .then(()=>{
-                res.redirect("/authors")
-                console.log("updated");
-            })
-        }
+            
+                if(req.body._id == "")
+                {
+                    insertRecord(req,res);
+                }
+                else{
+                    let userid = req.body._id;
+                    let updatedata = {
+                        authorname: req.body.authorname,
+                        info:  req.body.info,
+                        gener: req.body.gener,
+                        image: req.file.filename
+            
+            
+                    }
+            
+                    authordata.findByIdAndUpdate(userid, { $set:updatedata})
+                    .then(()=>{
+                        res.redirect("/authors")
+                        console.log("updated");
+                    })
+                }
+                
+           
+            
+         
         
         
         
 
      });
+
+     
+
 
       function insertRecord(req,res) {
             var item = {

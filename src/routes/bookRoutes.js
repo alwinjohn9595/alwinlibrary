@@ -40,6 +40,7 @@ function router(nav){
         const al = req.params.id;
         Bookdata.findById(al,(err,doc)=>{
             if(!err){
+                res.locals.id = al;
                 res.render("addBook",{
                     nav,
                     title:'Library',

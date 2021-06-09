@@ -24,7 +24,8 @@ function addbook(nav) {
 
     addBookRouter.get("/",(req,res)=>{
         res.render("addBook",{
-            nav
+            nav,
+            id: req.params._id
         })
     })
 
