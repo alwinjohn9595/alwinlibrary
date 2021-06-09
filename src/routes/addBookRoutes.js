@@ -31,7 +31,7 @@ function addbook(nav) {
 
     addBookRouter.post("/add",upload.single('image'),(req,res)=>{
         
-        console.log(req.body._id);
+        
         const al = req.body._id;
         if(al === ''){
             insertRecord(req,res);
