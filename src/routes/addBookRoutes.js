@@ -29,11 +29,34 @@ function addbook(nav) {
     })
 
     addBookRouter.post("/add",upload.single('image'),(req,res)=>{
-        if(req.body._id == '')
-         insertRecord(req,res);
+        
+        console.log(req.body._id);
+        const al = req.body._id;
+        if(al === ''){
+            insertRecord(req,res);
+        }
+         
 
-         else
-         updateRecord(res,req)
+         else{
+            
+            let userid = req.body._id;
+            let updatedata = {
+                title: req.body.title,
+                author:  req.body.author,
+                gener: req.body.gener,
+                image: req.file.filename
+
+
+            }
+
+            Bookdata.findByIdAndUpdate(userid, { $set:updatedata})
+            .then(()=>{
+                res.redirect("/books")
+                console.log("updated");
+            })
+            
+         }
+         
         
         
         
@@ -53,11 +76,7 @@ function addbook(nav) {
             res.redirect('/books');
     }
     
-    function updateRecord(req,res) {
-        Bookdata.findByIdAndUpdate({_id: req.body._id},req.body,{ new: true},(err,doc)=>{
-            if(!err){res.redirect("/books")}
-        })
-    }
+   
 
     
    return addBookRouter;
