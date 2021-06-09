@@ -28,8 +28,30 @@ function Addauthor(nav){
      
 
     addAuthorRoutes.post("/add",upload.single('image'),(req,res)=>{
+        const al = req.body._id;
+        if(al ==""){
+            insertRecord(req,res);
+        }
+
         
-        insertRecord(req,res);
+
+        else{
+            let userid = req.body._id;
+            let updatedata = {
+                authorname: req.body.authorname,
+                info:  req.body.info,
+                gener: req.body.gener,
+                image: req.file.filename
+
+
+            }
+
+            authordata.findByIdAndUpdate(userid, { $set:updatedata})
+            .then(()=>{
+                res.redirect("/authors")
+                console.log("updated");
+            })
+        }
         
         
         
