@@ -2,7 +2,7 @@ const express = require("express");
 const authorRouter = express.Router();
 const authordata = require('../model/Authordatabase');
 
-function authorrouter(nav)
+function authorrouter(nav1)
 {
     
 
@@ -12,7 +12,7 @@ function authorrouter(nav)
             authordata.find()
             .then((authors)=>{
                res.render("authors",{
-                  nav,
+                  nav1,
                   authors
                   
                   });
@@ -27,7 +27,7 @@ function authorrouter(nav)
             .then((author)=>{
             
             res.render("author",{
-            nav,
+            nav1,
             author
             })
          });
@@ -37,7 +37,7 @@ function authorrouter(nav)
                 if(!err){
                     res.locals.id = al;
                     res.render("addAuthor",{
-                        nav,
+                        nav1,
                         title:'Library',
                         author: doc
                     } )
@@ -49,7 +49,7 @@ function authorrouter(nav)
             const al = req.params.id
             authordata.findByIdAndRemove(al,(err,doc)=>{
                 if(!err){
-                    res.redirect("/authors");
+                    res.redirect("/admin/authors");
                 }
             })
          })

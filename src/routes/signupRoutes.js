@@ -6,7 +6,7 @@ const signupdata = require('../model/Signupdatabase');
 
 function adduser(nav) {
 
-    let errors =[];
+    
     userRouter.get("/",(req,res)=>{
         res.render("signup",{
             nav

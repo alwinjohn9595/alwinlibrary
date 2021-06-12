@@ -27,9 +27,9 @@
                 </div>
                 <nav class="collapse navbar-collapse" role="navigation">
                   <ul class="nav navbar-nav">
-                    <% for( i = 0;i<nav.length;i++) {%>
+                    <% for( i = 0;i<nav1.length;i++) {%>
                             <li>
-                              <a href="<%=nav[i].links%>"><%=nav[i].name%></a>
+                              <a href="<%=nav1[i].links%>"><%=nav1[i].name%></a>
                             </li>
                     <%}%>
                   </ul>
@@ -108,9 +108,9 @@
                               
                         
                               <h2>
-                                <a href="/authors/<%=author._id%>/update">Update</a>
+                                <a href="/admin/authors/<%=author._id%>/update">Update</a>
                                 &nbsp;
-                                <a href="/authors/<%=author._id%>/delete">Delete</a>
+                                <a href="/admin/authors/<%=author._id%>/delete">Delete</a>
                               </h2>
                             <div class="col-xs-3"></div>
                           </div>

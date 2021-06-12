@@ -52,12 +52,13 @@ const nav = [
           
 
 
-const booksRouter = require("./src/routes/bookRoutes")(nav);
-const authorRouter = require("./src/routes/authorRoutes")(nav);
-const addBookRouter = require("./src/routes/addBookRoutes")(nav);
-const addAuthorRouter = require("./src/routes/addAuthorRoutes")(nav);
+// const booksRouter = require("./src/routes/bookRoutes")(nav);
+// const authorRouter = require("./src/routes/authorRoutes")(nav);
+
 const signupRouter = require("./src/routes/signupRoutes")(nav);
 const loginRouter = require("./src/routes/loginRoutes")(nav);
+const adminRouter = require("./src/routes/adminroutes")(nav);
+const userRouter = require("./src/routes/userroutes")(nav);
 
 
 app.use(express.json());
@@ -70,12 +71,11 @@ app.use(express.static('./public'));
 app.set('view engine','ejs' );
 app.set('views','./src/views');
 
-app.use('/books',booksRouter);
-app.use('/authors', authorRouter);
-app.use('/addAuthor',addAuthorRouter);
-app.use('/addBook',addBookRouter);
+
 app.use('/signup',signupRouter);
 app.use('/login', loginRouter);
+app.use("/admin",adminRouter)
+app.use("/user",userRouter);
 
 app.get("/",function(req,res){
     res.render("index" , 
@@ -88,6 +88,8 @@ app.get("/",function(req,res){
 
     });
 });
+
+
 
 
 

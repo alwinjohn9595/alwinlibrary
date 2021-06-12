@@ -3,14 +3,14 @@ const express = require("express");
 const booksRouter = express.Router();
 const Bookdata = require("../model/Bookdatabase");
 
-function router(nav){
+function router(nav1){
     
     
     booksRouter.get("/",function(req,res){
          Bookdata.find()
          .then((books)=>{
             res.render("books",{
-                nav,
+                nav1,
                 title:'Library',
                 books 
             });
@@ -26,7 +26,7 @@ function router(nav){
         .then((book)=>{
             
             res.render("book",{
-                nav,
+                nav1,
                 title:'Library',
                 book
             })
@@ -42,7 +42,7 @@ function router(nav){
             if(!err){
                 res.locals.id = al;
                 res.render("addBook",{
-                    nav,
+                    nav1,
                     title:'Library',
                     book: doc
                 } )
@@ -55,7 +55,7 @@ function router(nav){
         const al = req.params.id
         Bookdata.findByIdAndRemove(al,(err,doc)=>{
             if(!err){
-                res.redirect("/books");
+                res.redirect("/admin/books");
             }
         })
      })

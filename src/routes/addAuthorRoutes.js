@@ -47,7 +47,7 @@ function Addauthor(nav){
             
                     authordata.findByIdAndUpdate(userid, { $set:updatedata})
                     .then(()=>{
-                        res.redirect("/authors")
+                        res.redirect("/admin/authors")
                         console.log("updated");
                     })
                 }
@@ -77,7 +77,7 @@ function Addauthor(nav){
         
                 var book = authordata(item);
                 book.save();
-                res.redirect('/authors');
+                res.redirect('/admin/authors');
          }
 
 

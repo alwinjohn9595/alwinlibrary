@@ -1,6 +1,8 @@
 const express = require("express");
 const addBookRouter = express.Router();
 const Bookdata = require('../model/Bookdatabase');
+
+
 const path = require('path')
 const multer = require('multer');
 
@@ -52,7 +54,7 @@ function addbook(nav) {
 
             Bookdata.findByIdAndUpdate(userid, { $set:updatedata})
             .then(()=>{
-                res.redirect("/books")
+                res.redirect("/admin/books")
                 console.log("updated");
             })
             
@@ -74,7 +76,7 @@ function addbook(nav) {
     
             var book = Bookdata(item);
             book.save();
-            res.redirect('/books');
+            res.redirect('/admin/books');
     }
     
    
