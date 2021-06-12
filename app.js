@@ -7,20 +7,20 @@ const port = process.env.PORT || 5000;
 
 const nav = [  
 
-            {
+            // {
               
-                links:'/books', 
-                name: 'Books'
+            //     links:'/books', 
+            //     name: 'Books'
         
         
-            },
+            // },
           
-            {   
+            // {   
                 
-                links:'/authors', 
-                name:"Authors"
+            //     links:'/authors', 
+            //     name:"Authors"
                 
-            },
+            // },
             {   
                 
                 links:'/signup', 
@@ -33,18 +33,18 @@ const nav = [
                 name:"Login"
                 
             },
-            {   
+            // {   
                 
-                links:'/addBook', 
-                name:"AddBook"
+            //     links:'/addBook', 
+            //     name:"AddBook"
                 
-            },
-            {   
+            // },
+            // {   
                 
-                links:'/addAuthor', 
-                name:"Add author"
+            //     links:'/addAuthor', 
+            //     name:"Add author"
                 
-            }
+            // }
 
         
         

@@ -13,41 +13,43 @@ function adduser(nav) {
         })
     })
 
-    userRouter.post("/add", async (req,res)=>{
-        const emailid = req.body.emailid;
+    userRouter.post("/", async (req,res)=>{
+
+
+         
+        var item = {
+            username: req.body.username,
+            emailid: req.body.emailid,
+            password: req.body.password
+            } 
         
-         console.log(req.body.emaild);
-        try {  
-            const xy = await signupdata.findOne({emaild: emaild})
-            console.log(xy.emaild);
-               if(xy.emaild === emailid)
-               {
-                   res.json("errro alresady")
-               } else{
-                var item = {
-                    username: req.body.username,
-                    emailid: req.body.emailid,
-                    password: req.body.password
-                    
-                    }   
+         
+    
             
-                    var user =  signupdata(item);
-                    user.save();
-                    res.redirect("/login");
-               }
-
-                
+              var user = await signupdata(item);
+              user.save(function(err) {
+                if (err) {
+                  if (err.name === 'MongoError' && err.code === 11000) {
+                    // Duplicate username
+                    return  res.status(404).render("signup",{errormsg:"already exiits",nav});
+                  }
             
-        }catch(error){
-            res.status(400).send("error");
-            
-        }
+                  // Some other error
+                  return res.status(422).send(err);
+                }
+              console.log("user created suceessfully"); 
+              
+              res.render("signup",{statusmsg: "user added",
+            nav}) ;
 
+                     
+              });
 
-       
-
+  
         
-    })
+        
+         
+    });
         
         
 

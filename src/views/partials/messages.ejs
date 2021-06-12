@@ -1,5 +1,14 @@
-<% if(typeof errors != "undifined") { %>
-    <% errors.forEach(function(error) {%>
-        <%=error.msg%>
-     <% }); %>
-<% } %>        
+       
+<% if (typeof errormsg !== "undefined") { %>
+    
+        <h1 class="alert alert-danger"> <%= errormsg %></h1>
+    
+    
+<% } %>
+
+<% if (typeof statusmsg !== "undefined") { %>
+    
+    <h1 class="alert alert-danger"> <%= statusmsg %></h1>
+
+
+<% } %>

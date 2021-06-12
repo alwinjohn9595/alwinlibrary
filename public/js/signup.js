@@ -24,7 +24,7 @@ function validation (){
     t2 = uservalidation();
     t3 = passwordvalidation();
     if(t1&&t2){
-        alert("Sign up successful");
+        
         return true; 
     }else{
         alert("Some fileds are missing");

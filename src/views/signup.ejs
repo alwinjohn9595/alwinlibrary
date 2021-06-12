@@ -78,13 +78,14 @@
           
           <!--/stories-->
         
-            
+          
               <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-5">
                   <div class="login-wrap">
                     <h3 class="text-center mb-4">Create Your Account</h3>
                       
-                    <form method="POST" action="/signup/add" id="signupform" onsubmit="return validation()" class="signup-form">
+                    <form method="POST" action="/signup" id="signupform" onsubmit="return validation()" class="signup-form">
+                      <%-include("partials/messages") %>
                       <div class="form-elements mb-3">
                         <label class="label" for="name">Username</label>
                         <input id="username" name="username" type="text" class="form-control" placeholder="JohnDoe" oninput=" return uservalidation()" >
