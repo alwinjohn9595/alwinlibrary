@@ -31,7 +31,7 @@ function adduser(nav) {
                 if (err) {
                   if (err.name === 'MongoError' && err.code === 11000) {
                     // Duplicate username
-                    return  res.status(404).render("signup",{errormsg:"already exiits",nav});
+                    return  res.status(404).render("signup",{errormsg:"User already exists!",nav});
                   }
             
                   // Some other error
@@ -39,7 +39,7 @@ function adduser(nav) {
                 }
               console.log("user created suceessfully"); 
               
-              res.render("signup",{statusmsg: "user added",
+              res.render("signup",{statusmsg: "User added!",
             nav}) ;
 
                      
