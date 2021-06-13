@@ -18,12 +18,19 @@ function user(nav) {
     })
 
     userRouter.post("/admin", async (req,res)=>{
-           console.log(req.body)
+              console.log(req.body)
     
               const emailid = req.body.emailid;
               const password = req.body.password;
               const userdata = await signupdata.findOne({emailid: emailid})
               console.log(userdata);
+              
+              
+              signupdata.findOne(emailid, function(err, user) {
+                if (err) {
+                  res.status(400).render("login",{errormsg:" User not present!",nav});
+                }
+              });
 
               if(emailid =="user@gmail.com"&& password ==="user@123")
               {
@@ -34,17 +41,10 @@ function user(nav) {
                   
                    res.redirect("/user");
               
-              } else
-              {
-                res.status(400).render("login",{errormsg:" Wrong password !",nav1})
               }
 
-       
 
-       
-        
-    
-    });
+              });
     
 
 

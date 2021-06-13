@@ -41,12 +41,6 @@ const nav1 = [
 function  userrouter(){
     
    
-    // const ubooksRouter = require("../routes/bookRoutes")(nav1);
-    // const uauthorRouter = require("../routes/authorRoutes")(nav1);
-
-     
-    //  userRouter.use('/books',ubooksRouter);
-    //  userRouter.use('/authors', uauthorRouter);
     
     userRouter.get("/",(req,res)=>{
         res.render("user",{
